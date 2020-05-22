@@ -34,63 +34,56 @@ let python_highlight_all = 1
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
-" Plugins will be downloaded under the specified directory.
-call plug#begin('~/.vim/plugged')
-
-" Declare the list of plugins.
-Plug 'jalvesaq/Nvim-R'
-
-" List ends here. Plugins become visible to Vim after this call.
-call plug#end()
-
 "split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"vundle
-set nocompatible
-filetype off
+" vim-plug
+call plug#begin('~/.vim/plugged')
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" support Python development using Conda
+Plug 'cjrh/vim-conda'
+
+" nvim-R
+Plug 'jalvesaq/Nvim-R'
 
 " Run interactive programs (bash, python, etc) inside a vim buffer
-Plugin 'ying17zi/vim-conque'
+Plug 'ying17zi/vim-conque'
 
 " airline powerbar
-Plugin 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 
-Plugin 'VundleVim/Vundle.vim'
 "git interface
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 "filesystem
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'kien/ctrlp.vim'
 
 "html
 "  isnowfy only compatible with python not python3
-Plugin 'isnowfy/python-vim-instant-markdown'
-Plugin 'jtratner/vim-flavored-markdown'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'nelstrom/vim-markdown-preview'
+Plug 'isnowfy/python-vim-instant-markdown'
+Plug 'jtratner/vim-flavored-markdown'
+Plug 'suan/vim-instant-markdown'
+Plug 'nelstrom/vim-markdown-preview'
 "python sytax checker
-Plugin 'nvie/vim-flake8'
-Plugin 'vim-scripts/Pydiction'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'scrooloose/syntastic'
+Plug 'nvie/vim-flake8'
+Plug 'vim-scripts/Pydiction'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'scrooloose/syntastic'
 
 "auto-completion stuff
-Plugin 'klen/rope-vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'ervandew/supertab'
+Plug 'klen/rope-vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'ervandew/supertab'
 ""code folding
-Plugin 'tmhedberg/SimpylFold'
+Plug 'tmhedberg/SimpylFold'
 
-call vundle#end()
+" Initialize plugin system
+call plug#end()
 
 filetype plugin indent on    " enables filetype detection
 let g:SimpylFold_docstring_preview = 1
@@ -107,16 +100,16 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 set noswapfile
 
 "python with virtualenv support
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUA_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  sys.path.insert(0, project_base_dir)
-  activate_this = os.path.join(project_base_dir,'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
+"py << EOF
+"import os.path
+"import sys
+"import vim
+"if 'VIRTUA_ENV' in os.environ:
+"  project_base_dir = os.environ['VIRTUAL_ENV']
+"  sys.path.insert(0, project_base_dir)
+"  activate_this = os.path.join(project_base_dir,'bin/activate_this.py')
+"  execfile(activate_this, dict(__file__=activate_this))
+"EOF
 
 "it would be nice to set tag files by the active virtualenv here
 ":set tags=~/mytags "tags for ctags and taglist
