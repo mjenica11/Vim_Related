@@ -34,6 +34,32 @@ nnoremap <C-H> <C-W><C-H>
 " vim-plug
 call plug#begin('~/.vim/plugged')
 
+" show git diff in sign column
+Plug 'airblade/vim-gitgutter'
+
+" linting (syntax checking and semantic errors) 
+Plug 'dense-analysis/ale'
+" Enable airline's extion for ale
+let g:airline#extensions#ale#enabled = 1
+" Set different highlights for the sign column if error
+let g:ale_change_sign_column_color = 1
+" work globally in all buffers
+let g:ale_vim_vimls_use_global = 1
+let g:ale_r_lintr_use_global = 1
+let g:ale_python_flake8_use_global = 1
+let g:ale_python_mypy_use_global = 1
+let g:ale_python_pylint_use_global = 1
+" keep gutter open
+let g:ale_sign_column_always = 1
+
+" surround items, useful for markdowns
+Plug 'tpope/vim-surround'
+
+" make brackets rainbow colors
+Plug 'frazrepo/vim-rainbow'
+" enable globally
+let g:rainbow_active = 1
+
 " support Python development using Conda
 Plug 'cjrh/vim-conda'
 
@@ -45,6 +71,8 @@ Plug 'ying17zi/vim-conque'
 
 " airline powerbar
 Plug 'vim-airline/vim-airline'
+
+" automatically display all buffers
 let g:airline#extensions#tabline#enabled = 1
 
 "git interface
@@ -55,9 +83,6 @@ Plug 'scrooloose/nerdtree'
 
 " filepath finder 
 Plug 'ctrlpvim/ctrlp.vim' 
-
-" Check syntax error
-Plug 'scrooloose/syntastic'
 
 " tab completion
 Plug 'ervandew/supertab'
