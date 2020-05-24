@@ -10,6 +10,9 @@ let &colorcolumn=join(range(81,999),",")
 let &colorcolumn="80,".join(range(120,999),",")
 highlight ColorColumn ctermbg=235
 
+" change gitgutter column color
+highlight SignColumn ctermbg=53
+
 " set color scheme after background color
 " ...for some reason this gets me what I want but it shouldn't work...
 "colorscheme elflord
