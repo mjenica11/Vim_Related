@@ -1,9 +1,18 @@
+"--------------------------Global configurations------------------------------
 " change color scheme
 syntax on 
-colorscheme elflord
 
 " enable syntax highlighting
 syntax enable
+
+" inidcate 80 chr limit, change col after 120 chr
+let &colorcolumn=join(range(81,999),",")
+let &colorcolumn="80,".join(range(120,999),",")
+highlight ColorColumn ctermbg=235
+
+" set color scheme after background color
+" ...for some reason this gets me what I want but it shouldn't work...
+"colorscheme elflord
 
 " show line numbers
 set number
@@ -31,6 +40,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+"---------------------------Plugins--------------------------------------------
 " vim-plug
 call plug#begin('~/.vim/plugged')
 
@@ -39,26 +49,12 @@ Plug 'airblade/vim-gitgutter'
 
 " linting (syntax checking and semantic errors) 
 Plug 'dense-analysis/ale'
-" Enable airline's extion for ale
-let g:airline#extensions#ale#enabled = 1
-" Set different highlights for the sign column if error
-let g:ale_change_sign_column_color = 1
-" work globally in all buffers
-let g:ale_vim_vimls_use_global = 1
-let g:ale_r_lintr_use_global = 1
-let g:ale_python_flake8_use_global = 1
-let g:ale_python_mypy_use_global = 1
-let g:ale_python_pylint_use_global = 1
-" keep gutter open
-let g:ale_sign_column_always = 1
 
 " surround items, useful for markdowns
 Plug 'tpope/vim-surround'
 
 " make brackets rainbow colors
 Plug 'frazrepo/vim-rainbow'
-" enable globally
-let g:rainbow_active = 1
 
 " support Python development using Conda
 Plug 'cjrh/vim-conda'
@@ -71,9 +67,6 @@ Plug 'ying17zi/vim-conque'
 
 " airline powerbar
 Plug 'vim-airline/vim-airline'
-
-" automatically display all buffers
-let g:airline#extensions#tabline#enabled = 1
 
 "git interface
 Plug 'tpope/vim-fugitive'
@@ -90,15 +83,31 @@ Plug 'ervandew/supertab'
 " Initialize plugin system
 call plug#end()
 
-filetype plugin indent on    " enables filetype detection
-let g:SimpylFold_docstring_preview = 1
+"-----------------------------Plug Settings-----------------------------------
+" Enable airline's extion for ale
+let g:airline#extensions#ale#enabled = 1
 
-"custom keys
-let mapleader=" "
+" Set different highlights for the sign column if error
+let g:ale_change_sign_column_color = 1
 
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+" work globally in all buffers
+let g:ale_vim_vimls_use_global = 1
+let g:ale_r_lintr_use_global = 1
+let g:ale_python_flake8_use_global = 1
+let g:ale_python_mypy_use_global = 1
+let g:ale_python_pylint_use_global = 1
 
-"------------Python PEP 8 stuff----------------
+" keep gutter open
+let g:ale_sign_column_always = 1
+" airline: automatically display all buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" enable rainbow globally
+let g:rainbow_active = 1
+
+"ignore files in NERDTree
+let NERDTreeIgnore=['\.pyc$', '\~$'] 
+"----------------------Python PEP 8 formatting---------------------------------
 " Number of spaces that a pre-existing tab is equal to.
 au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
 
@@ -140,5 +149,5 @@ autocmd FileType python set foldmethod=indent
 
 "use space to open folds
 nnoremap <space> za
-"----------Python PEP 8 stuff--------------
+"-------------------------End of Python PEP 8 stuff----------------------------
 
