@@ -87,9 +87,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 " tab completion
 Plug 'ervandew/supertab'
 
-""code folding
-Plug 'tmhedberg/SimpylFold'
-
 " Initialize plugin system
 call plug#end()
 
