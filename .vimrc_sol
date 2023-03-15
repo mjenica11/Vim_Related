@@ -1,0 +1,39 @@
+" modification to make coding easier
+syntax on 
+
+" make different object types different colots
+colorscheme elflord
+
+" add highlighting on top of text colors
+syntax enable
+
+" add line numbers
+set number
+
+" change line numbers depending on where cursor is located
+" makes traveling easier
+set relativenumber
+
+" set tab to be equal to 4 spaces
+set ts=4
+
+" automatically indent when starting a function
+set autoindent
+
+" allow for word autocomplete
+set expandtab
+
+" set indents to be 4 spaces
+set shiftwidth=4
+
+" highlights matches when searching 
+set showmatch
+
+" call plugin with vim-plug
+" Plugins will be downloaded under the specified directory.
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+
+" amazing R plugin <3
+Plug 'jalvesaq/NVim-R'
+
+call plug#end()
