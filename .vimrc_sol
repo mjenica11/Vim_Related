@@ -29,6 +29,12 @@ set shiftwidth=4
 " highlights matches when searching 
 set showmatch
 
+" nvimcom does not start
+" start tmux first: https://github.com/jalvesaq/Nvim-R/issues/278
+let R_in_buffer = 0
+let R_applescript = 0
+let R_tmux_split = 1
+
 " call plugin with vim-plug
 " Plugins will be downloaded under the specified directory.
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
