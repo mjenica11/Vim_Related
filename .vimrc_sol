@@ -42,4 +42,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 " amazing R plugin <3
 Plug 'jalvesaq/NVim-R'
 
+" Vim directory explorer
+Plug 'https://github.com/scrooloose/nerdtree'
+
 call plug#end()
